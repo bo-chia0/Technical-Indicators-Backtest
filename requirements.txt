@@ -1,0 +1,7 @@
+pandas
+matplotilib
+numpy
+ta
+itertools
+seaborn
+statistics
