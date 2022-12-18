@@ -1,16 +1,17 @@
+###-----------------------------------------------------------------------------------------###
+"""Import Packages"""
+###-----------------------------------------------------------------------------------------###
 import pandas as pd
 import numpy as np
 from Account import Account
 import itertools
 
 ###-----------------------------------------------------------------------------------------###
-###-----------------------------------------------------------------------------------------###
 """Data Import and Preprocess"""
-###-----------------------------------------------------------------------------------------###
 ###-----------------------------------------------------------------------------------------###
 
 #	Read OHLC files kept in folder 'data'
-wd = 'data/'
+wd = '../data/'
 ext = 'USDT_1h.csv'
 btc_1h = pd.read_csv(wd+'BTC'+ext, header=1)
 eth_1h = pd.read_csv(wd+'ETH'+ext, header=1)
@@ -33,9 +34,7 @@ ada_1h = preprocess(ada_1h)
 
 
 ###-----------------------------------------------------------------------------------------###
-###-----------------------------------------------------------------------------------------###
 """基本資料"""
-###-----------------------------------------------------------------------------------------###
 ###-----------------------------------------------------------------------------------------###
 
 
@@ -69,9 +68,7 @@ cum_returns = ((1 + returns).cumprod() - 1) *100
 
 
 ###-----------------------------------------------------------------------------------------###
-###-----------------------------------------------------------------------------------------###
 """技術指標"""	#	All the technical analysis are calculated using ta library and saved in dataframe.
-###-----------------------------------------------------------------------------------------###
 ###-----------------------------------------------------------------------------------------###
 
 
@@ -139,9 +136,7 @@ for col in df_close.columns:
 
 
 ###-----------------------------------------------------------------------------------------###
-###-----------------------------------------------------------------------------------------###
 """實際交易"""
-###-----------------------------------------------------------------------------------------###
 ###-----------------------------------------------------------------------------------------###
 
 cryptos = ['BTC', 'ETH', 'BNB', 'ADA']	# 4 different cryptos
@@ -229,10 +224,10 @@ df_return_ma = pd.DataFrame(return_all, columns=colnames, index=cryptos)		#	Data
 df_vol_ma = pd.DataFrame(vol_all, columns=colnames, index=cryptos)				#	Dataframe record volatility for every	combinations
 df_mean_vol_ma = pd.DataFrame(mean_vol_all, columns=colnames, index=cryptos)	#	Dataframe record mean-volatility ratio for every combinations
 
-df_win_rate_ma.to_csv('Results/MA_WinRate.csv')					#	Export as .csv
-df_return_ma.to_csv('Results/MA_Return.csv')					#	Export as .csv
-df_vol_ma.to_csv('Results/MA_Volatility.csv')					#	Export as .csv
-df_mean_vol_ma.to_csv('Results/MA_Mean_Volatility_Ratio.csv')	#	Export as .csv
+df_win_rate_ma.to_csv('../Results/MA_WinRate.csv')					#	Export as .csv
+df_return_ma.to_csv('../Results/MA_Return.csv')					#	Export as .csv
+df_vol_ma.to_csv('../Results/MA_Volatility.csv')					#	Export as .csv
+df_mean_vol_ma.to_csv('../Results/MA_Mean_Volatility_Ratio.csv')	#	Export as .csv
 
 
 
@@ -479,7 +474,7 @@ df_mean_volatility['MA5+OBV'] = mean_volatility_list	#	Record Strategy MA5+OBV's
 """輸出結果"""
 ###-----------------------------------------------------------------------------------------###
 ###-----------------------------------------------------------------------------------------###
-df_win_rate.to_csv('Results/ALL_WinRate.csv')		#	Export as .csv
-df_return.to_csv('Results/ALL_Return.csv')			#	Export as .csv
-df_volatility.to_csv('Results/ALL_Volatility.csv')		#	Export as .csv
-df_mean_volatility.to_csv('Results/ALL_Mean_Volatility.csv')	#	Export as .csv
+df_win_rate.to_csv('../Results/ALL_WinRate.csv')		#	Export as .csv
+df_return.to_csv('../Results/ALL_Return.csv')			#	Export as .csv
+df_volatility.to_csv('../Results/ALL_Volatility.csv')		#	Export as .csv
+df_mean_volatility.to_csv('../Results/ALL_Mean_Volatility.csv')	#	Export as .csv
